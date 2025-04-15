@@ -1,7 +1,8 @@
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from 'firebase/auth';
 import { auth } from './firebase';
 import { getFirestore, doc, setDoc, getDoc, updateDoc } from 'firebase/firestore';
-import { firestore } from './firebase';  // Ensure this is the initialized Firestore instance
+import { firestore, storage} from './firebase';  // Ensure this is the initialized Firestore instance
+
 
 // Function to save user profile data to Firestore
 export const saveUserProfile = async (userId, profileData) => {
