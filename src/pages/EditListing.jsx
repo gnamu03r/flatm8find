@@ -4,24 +4,22 @@ import { doc, getDoc, updateDoc } from 'firebase/firestore';
 import { useParams, useNavigate } from 'react-router-dom';
 
 const EditListingPage = () => {
-  const { id } = useParams();  // Get the listing ID from the URL params
+  const { id } = useParams();
   const navigate = useNavigate();
   const [listing, setListing] = useState(null);
   const [error, setError] = useState('');
-  const [isLoading, setIsLoading] = useState(true);  // Track loading state
+  const [isLoading, setIsLoading] = useState(true);
   const [updatedListing, setUpdatedListing] = useState({});
 
   useEffect(() => {
-    // Fetch the listing data when the component mounts
     const fetchListing = async () => {
       try {
         const listingRef = doc(firestore, 'listings', id);
         const listingDoc = await getDoc(listingRef);
-        
+
         if (listingDoc.exists()) {
-          // Set the initial form values with the fetched listing data
           setListing(listingDoc.data());
-          setUpdatedListing(listingDoc.data());  // Set the editable state for the form
+          setUpdatedListing(listingDoc.data());
           setIsLoading(false);
         } else {
           setError('Listing not found');
@@ -42,32 +40,29 @@ const EditListingPage = () => {
   };
 
   const handleSave = async () => {
-    if (!updatedListing.area || !updatedListing.roomType || !updatedListing.rent) {
+    const { area, roomType, rent, genderPref, contactInfo, description } = updatedListing;
+
+    if (!area || !roomType || !rent || !genderPref || !contactInfo || !description) {
       setError('Please fill out all fields');
       return;
     }
 
     try {
       const listingRef = doc(firestore, 'listings', id);
-      await updateDoc(listingRef, updatedListing);  // Update the listing with new data
-      navigate('/profile');  // Navigate to the profile page after successful update
+      await updateDoc(listingRef, updatedListing);
+      navigate('/profile');
     } catch (err) {
       setError('Error updating listing');
     }
   };
 
-  if (isLoading) {
-    return <p>Loading...</p>;
-  }
-
-  if (error) {
-    return <p>{error}</p>;
-  }
+  if (isLoading) return <p>Loading...</p>;
+  if (error) return <p>{error}</p>;
 
   return (
     <div className="p-6 max-w-3xl mx-auto mt-10 bg-white shadow-md rounded-lg">
       <h2 className="text-2xl font-bold mb-4">Edit Listing</h2>
-      
+
       <div>
         <label>Area</label>
         <input
@@ -96,20 +91,23 @@ const EditListingPage = () => {
           className="w-full p-2 border border-gray-300 rounded mb-4"
         />
 
-        <label>Vacant From</label>
-        <input
-          type="date"
-          name="vacantFrom"
-          value={updatedListing.vacantFrom || ''}
-          onChange={handleChange}
-          className="w-full p-2 border border-gray-300 rounded mb-4"
-        />
-
         <label>Gender Preference</label>
-        <input
-          type="text"
+        <select
           name="genderPref"
           value={updatedListing.genderPref || ''}
+          onChange={handleChange}
+          className="w-full p-2 border border-gray-300 rounded mb-4"
+        >
+          <option value="">Select Gender Preference</option>
+          <option value="Male">Male</option>
+          <option value="Female">Female</option>
+          <option value="Any">Both</option>
+        </select>
+
+        <label>Description</label>
+        <textarea
+          name="description"
+          value={updatedListing.description || ''}
           onChange={handleChange}
           className="w-full p-2 border border-gray-300 rounded mb-4"
         />
