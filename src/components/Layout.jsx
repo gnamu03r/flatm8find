@@ -5,7 +5,7 @@ const Layout = ({ children }) => {
           <h1 className="text-xl font-bold">flatm8find</h1>
         </header> */}
         <main className="main_window">{children}</main>
-        <footer className="p-4 border-t border-dusk-700 text-sm text-center text-dusk-500">
+        <footer className="footer">
           © 2025 flatm8find. All rights reserved.
         </footer>
       </div>
