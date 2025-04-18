@@ -4,6 +4,7 @@ import { doc, getDoc, updateDoc } from 'firebase/firestore';
 import { useParams } from 'react-router-dom';
 import { useAuth } from '../hooks/useAuth';
 import { arrayUnion, arrayRemove } from 'firebase/firestore';
+import Layout from '../components/Layout';
 
 const ListingDetails = () => {
   const { id } = useParams();
@@ -65,6 +66,8 @@ const ListingDetails = () => {
   const isOwnListing = currentUser && listing.uid === currentUser.uid;
 
   return (
+    <Layout>
+
     <div className="max-w-3xl mx-auto p-6 mt-10 bg-white shadow-md rounded-lg">
       <h2 className="text-2xl font-bold mb-4">{listing.area} - {listing.roomType}</h2>
 
@@ -111,6 +114,7 @@ const ListingDetails = () => {
         </div>
       </div>
     </div>
+    </Layout>
   );
 };
 

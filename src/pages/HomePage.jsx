@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { firestore } from '../auth';
+import './home.css';
 import {
   collection,
   query,
@@ -9,10 +10,11 @@ import {
   increment,
 } from 'firebase/firestore';
 import { Link } from 'react-router-dom';
+import Layout from '../components/Layout';
+import defaultImage from '../assets/home-button2.png';
 
-const DEFAULT_IMAGE = 'https://via.placeholder.com/160x100?text=No+Image';
+const DEFAULT_IMAGE = defaultImage;
 
-// Utility function to split listings into two columns
 const splitIntoColumns = (listings) => {
   const left = [];
   const right = [];
@@ -33,36 +35,40 @@ const ListingCard = ({ listing, handleViewDetailsClick }) => {
     return diffDays === 0 ? 'Posted today' : `Posted ${diffDays} day${diffDays > 1 ? 's' : ''} ago`;
   };
 
+  const photoCount = listing.images?.length || 0;
+  console.log(photoCount);
+
   return (
-    <div className="bg-white border border-gray-200 rounded-lg flex h-[90px] text-xs shadow-sm overflow-hidden">
-      <div className="w-[100px] h-full flex-shrink-0">
+    <div className="home_card">
+      <div className="card_image relative">
         <img
           src={listing.images?.[0]?.url || DEFAULT_IMAGE}
           alt="Listing"
-          className="w-full h-full object-cover"
+          className="w-full h-full object-cover rounded-t-md z=-1"
         />
-      </div>
-      <div className="p-2 flex-1 flex flex-col justify-between">
-        <div>
-          <div className="flex justify-between items-center">
-            <h3 className="font-semibold text-gray-800 truncate text-sm">
-              {listing.area} - {listing.roomType}
-            </h3>
-            <span className="text-green-600 font-medium">₹{listing.rent}</span>
+        {photoCount >= 1 && (
+          <div className="photo_cnt">
+            {photoCount}+ photos
           </div>
-          <div className="text-gray-500">{getDaysAgo(listing.createdAt)}</div>
+        )}
+      </div>
+      <div className="listing_info">
+        <div className="listing_name">
+          <h3>{listing.area} - {listing.roomType}</h3>
+          <p className="listing_rent">₹{listing.rent} per person</p>
         </div>
-        <div className="flex justify-between items-center text-gray-600 mt-1">
+        <div className="listing_day">{getDaysAgo(listing.createdAt)}</div>
+        <div className="listing_info2">
           <Link
             to={`/listing/${listing.id}`}
             onClick={() => handleViewDetailsClick(listing.id)}
-            className="text-blue-500 hover:underline"
+            className="view_btn"
           >
-            View
+            View Details
           </Link>
-          <div className="flex gap-2">
-            <span title="Upvotes">👍 {listing.upvotes || 0}</span>
-            <span title="Views">👁️ {listing.views || 0}</span>
+          <div className="listing_stats">
+            <span title="Upvotes"><i className='bx bx-upvote'></i>{listing.upvotes || 0}</span>
+            <span title="Views">Views {listing.views || 0}</span>
           </div>
         </div>
       </div>
@@ -70,11 +76,12 @@ const ListingCard = ({ listing, handleViewDetailsClick }) => {
   );
 };
 
+
 const HomePage = () => {
   const [listings, setListings] = useState([]);
   const [searchQuery, setSearchQuery] = useState('');
   const [sortOption, setSortOption] = useState('');
-  const [femaleOnly, setFemaleOnly] = useState(false);
+  const [genderFilter, setGenderFilter] = useState('');
 
   useEffect(() => {
     const fetchListings = async () => {
@@ -90,7 +97,6 @@ const HomePage = () => {
         console.error('Error fetching listings:', error);
       }
     };
-
     fetchListings();
   }, []);
 
@@ -113,8 +119,8 @@ const HomePage = () => {
         listing.roomType?.toLowerCase().includes(query);
 
       const matchesGender =
-        !femaleOnly ||
-        listing.genderPref?.toLowerCase().includes('female');
+        genderFilter === '' ||
+        listing.genderPref?.toLowerCase().includes(genderFilter);
 
       return matchesSearch && matchesGender;
     })
@@ -130,67 +136,74 @@ const HomePage = () => {
   const [leftColumn, rightColumn] = splitIntoColumns(filteredAndSortedListings);
 
   return (
-    <div className="p-4 sm:p-6 max-w-6xl mx-auto mt-8 bg-white shadow-md rounded-lg">
-      <h2 className="text-2xl font-bold mb-6">Available Listings</h2>
+    <Layout>
+      <div className="listing_available">
 
-      {/* Controls */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
-        <input
-          type="text"
-          placeholder="Search by area or room type..."
-          value={searchQuery}
-          onChange={e => setSearchQuery(e.target.value)}
-          className="border p-2 rounded-md w-full sm:w-1/2 text-sm"
-        />
-        <div className="flex items-center gap-4">
-          <select
-            value={sortOption}
-            onChange={e => setSortOption(e.target.value)}
-            className="border p-2 rounded-md w-full sm:w-auto text-sm"
-          >
-            <option value="">Sort by</option>
-            <option value="rent-asc">Rent: Low to High</option>
-            <option value="rent-desc">Rent: High to Low</option>
-            <option value="views-desc">Most Viewed</option>
-            <option value="upvotes-desc">Most Upvoted</option>
-            <option value="date-desc">Newest First</option>
-          </select>
-          <label className="inline-flex items-center space-x-2 text-sm">
+          <h2 className="avl">Available Listings ({filteredAndSortedListings.length}+)</h2>
+
+        <div className='header2'>
+          {/* Controls */}
+          <div className="listing_control">
             <input
-              type="checkbox"
-              checked={femaleOnly}
-              onChange={() => setFemaleOnly(!femaleOnly)}
-              className="form-checkbox h-4 w-4 text-pink-500"
-            />
-            <span>Female-only</span>
-          </label>
+              type="text"
+              placeholder="Search by area or room type..."
+              value={searchQuery}
+              onChange={e => setSearchQuery(e.target.value)}
+              className="listing_search"
+              />
+            <div className="listing_sortfilter">
+              <div className='listing_sort'>
+                <select
+                  value={sortOption}
+                  onChange={e => setSortOption(e.target.value)}
+                  className="sort_select"
+                  >
+                  <option value="">Sort by</option>
+                  <option value="rent-asc">Rent: Low to High</option>
+                  <option value="rent-desc">Rent: High to Low</option>
+                  <option value="views-desc">Most Viewed</option>
+                  <option value="upvotes-desc">Most Upvoted</option>
+                  <option value="date-desc">Newest First</option>
+                </select>
+              </div>
+              <div className='listing_filter'>
+                <select
+                  value={genderFilter}
+                  onChange={e => setGenderFilter(e.target.value)}
+                  className="filter_select"
+                  >
+                  <option value="">Filter</option>
+                  <option value="female">Female-only</option>
+                  <option value="male">Male-only</option>
+                </select>
+              </div>
+            </div>
+          </div>
         </div>
-      </div>
 
-      {/* True two-column layout */}
-      <div className="flex flex-col md:flex-row gap-4 max-h-[75vh] overflow-y-auto">
-        {/* Left Column */}
-        <div className="flex-1 flex flex-col gap-3 pr-2">
-          {leftColumn.map(listing => (
-            <ListingCard
-              key={listing.id}
-              listing={listing}
-              handleViewDetailsClick={handleViewDetailsClick}
-            />
-          ))}
-        </div>
-        {/* Right Column */}
-        <div className="flex-1 flex flex-col gap-3 pl-2">
-          {rightColumn.map(listing => (
-            <ListingCard
-              key={listing.id}
-              listing={listing}
-              handleViewDetailsClick={handleViewDetailsClick}
-            />
-          ))}
+        {/* Two-column layout */}
+        <div className="flex flex-col md:flex-row gap-4">
+          <div className="flex-1 flex flex-col gap-4">
+            {leftColumn.map(listing => (
+              <ListingCard
+                key={listing.id}
+                listing={listing}
+                handleViewDetailsClick={handleViewDetailsClick}
+              />
+            ))}
+          </div>
+          <div className="flex-1 flex flex-col gap-4">
+            {rightColumn.map(listing => (
+              <ListingCard
+                key={listing.id}
+                listing={listing}
+                handleViewDetailsClick={handleViewDetailsClick}
+              />
+            ))}
+          </div>
         </div>
       </div>
-    </div>
+    </Layout>
   );
 };
 

@@ -3,6 +3,7 @@ import { firestore } from '../auth';
 import { collection, addDoc, serverTimestamp } from 'firebase/firestore';
 import { useAuth } from '../hooks/useAuth';
 import { useNavigate } from 'react-router-dom';
+import Layout from '../components/Layout';
 
 const resizeImage = (file) => {
   return new Promise((resolve, reject) => {
@@ -168,6 +169,8 @@ const PostListing = () => {
   };
 
   return (
+    <Layout>
+
     <div className="max-w-lg mx-auto p-6 mt-10 bg-white shadow-md rounded-lg">
       <h2 className="text-2xl font-bold mb-4">Post a Room Listing</h2>
       <form onSubmit={handleSubmit} className="space-y-4">
@@ -210,6 +213,7 @@ const PostListing = () => {
         </button>
       </form>
     </div>
+    </Layout>
   );
 };
 

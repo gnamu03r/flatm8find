@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { loginUser, signupUser } from "../auth"; // Import functions for email login/signup
+import Layout from "../components/Layout";
 
 const EmailAuthPage = () => {
   const [mode, setMode] = useState("login"); // 'login' or 'signup'
@@ -26,6 +27,8 @@ const EmailAuthPage = () => {
   };
 
   return (
+    <Layout>
+      
     <div className="p-6 max-w-sm mx-auto mt-10 bg-white shadow-md rounded-lg">
       <h2 className="text-2xl font-bold mb-4 text-center">{mode === "login" ? "Login" : "Sign Up"}</h2>
       {error && <p className="text-red-500 text-sm mb-2">{error}</p>}
@@ -61,7 +64,7 @@ const EmailAuthPage = () => {
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             required
-          />
+            />
         </div>
         <button type="submit" className="w-full bg-blue-500 text-white p-2 rounded-md">
           {mode === "login" ? "Login" : "Sign Up"}
@@ -76,6 +79,7 @@ const EmailAuthPage = () => {
         )}
       </p>
     </div>
+          </Layout>
   );
 };
 

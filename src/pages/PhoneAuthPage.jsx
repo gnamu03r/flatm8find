@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { sendOTP, verifyOTP } from "../auth"; // Import functions for OTP
+import Layout from "../components/Layout";
 
 const PhoneAuthPage = () => {
   const [phone, setPhone] = useState("");
@@ -29,6 +30,8 @@ const PhoneAuthPage = () => {
   };
 
   return (
+    <Layout>
+
     <div className="p-6 max-w-sm mx-auto mt-10 bg-white shadow-md rounded-lg">
       <h2 className="text-2xl font-bold mb-4 text-center">Phone Authentication</h2>
       {error && <p className="text-red-500 text-sm mb-2">{error}</p>}
@@ -59,13 +62,14 @@ const PhoneAuthPage = () => {
             <button
               onClick={handleVerifyOtp}
               className="w-full bg-green-600 text-white p-2 rounded-md"
-            >
+              >
               Verify OTP
             </button>
           </>
         )}
       </div>
     </div>
+        </Layout>
   );
 };
 

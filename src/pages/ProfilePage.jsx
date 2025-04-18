@@ -4,6 +4,7 @@ import { getUserProfile } from '../auth';
 import { firestore } from '../auth';
 import { collection, query, where, getDocs, deleteDoc, doc } from 'firebase/firestore';
 import { Link } from 'react-router-dom';
+import Layout from '../components/Layout';
 
 const ProfilePage = () => {
   const { currentUser } = useAuth();
@@ -65,6 +66,8 @@ const ProfilePage = () => {
   if (error) return <p>Error: {error}</p>;
 
   return (
+    <Layout>
+
     <div className="p-6 max-w-3xl mx-auto mt-10 bg-white shadow-md rounded-lg">
       {profile ? (
         <>
@@ -80,7 +83,7 @@ const ProfilePage = () => {
             <Link
               to="/post-listing"
               className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
-            >
+              >
               ➕ Post New Listing
             </Link>
           </div>
@@ -127,6 +130,7 @@ const ProfilePage = () => {
         <p>Loading profile...</p>
       )}
     </div>
+        </Layout>
   );
 };
 

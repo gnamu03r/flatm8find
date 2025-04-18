@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../hooks/useAuth';  // Hook to get current user
 import { getUserProfile, saveUserProfile } from '../auth';  // Import functions to get and update profile
+import Layout from '../components/Layout';
 
 const EditProfilePage = () => {
   const { currentUser } = useAuth();  // Get current user
@@ -57,6 +58,8 @@ const EditProfilePage = () => {
   if (error) return <p>{error}</p>;
 
   return (
+    <Layout>
+      
     <div className="p-6 max-w-md mx-auto mt-10 bg-white shadow-md rounded-lg">
       <h2 className="text-2xl font-bold mb-4">Edit Profile</h2>
 
@@ -93,6 +96,7 @@ const EditProfilePage = () => {
         </button>
       </form>
     </div>
+    </Layout>
   );
 };
 

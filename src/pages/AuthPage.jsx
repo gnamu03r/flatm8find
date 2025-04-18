@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { loginWithGoogle } from "../auth"; // Import Google login
+import Layout from "../components/Layout";
 
 const AuthPage = () => {
   const [error, setError] = useState("");
@@ -24,6 +25,8 @@ const AuthPage = () => {
   };
 
   return (
+    <Layout>
+
     <div className="p-6 max-w-sm mx-auto mt-10 bg-white shadow-md rounded-lg">
       <h2 className="text-2xl font-bold mb-4 text-center">Welcome to AuthPage</h2>
       {error && <p className="text-red-500 text-sm mb-2">{error}</p>}
@@ -51,6 +54,7 @@ const AuthPage = () => {
         Continue with Phone Number
       </button>
     </div>
+    </Layout>
   );
 };
 

@@ -12,6 +12,8 @@ import EmailAuthPage from './pages/EmailAuthPage';
 import PhoneAuthPage from './pages/PhoneAuthPage';
 import { getAuth, onAuthStateChanged } from 'firebase/auth';
 import PrivateRoute from './components/PrivateRoute';
+import './App.css';
+import logoimage from './assets/logo.png';
 
 const App = () => {
   const [user, setUser] = useState(null);
@@ -29,20 +31,24 @@ const App = () => {
     <Router>
       <div className="min-h-screen bg-gray-100">
         {/* Navigation Bar */}
-        <nav className="bg-blue-500 p-4">
-          <div className="container mx-auto flex justify-between items-center">
-            <h1 className="text-white font-bold text-2xl">FlatMate Finder</h1>
-            <div className="space-x-4">
-              <Link to="/" className="text-white hover:text-gray-200">Home</Link>
+        <nav className="nav_bar">
+          <div className="nav_header">
+            <h1 className="nav_title">
+              <Link to="/" className="logo_link">
+              <img className='logo' src={logoimage}></img>
+              </Link>
+              FlatMate Finder</h1>
+            <div className="nav_menu">
+              <Link to="/" className="nav_item">Home</Link>
               {user && (
                 <>
-                  <Link to="/profile" className="text-white hover:text-gray-200">Profile</Link>
-                  <Link to="/post-listing" className="text-white hover:text-gray-200">Post a Listing</Link>
+                  <Link to="/profile" className="nav_item">Profile</Link>
+                  <Link to="/post-listing" className="nav_item">Post a Listing</Link>
                   <SignOutButton />
                 </>
               )}
               {!user && (
-                <Link to="/auth" className="text-white hover:text-gray-200">
+                <Link to="/auth" className="nav_item">
                   Login/Signup
                 </Link>
               )}

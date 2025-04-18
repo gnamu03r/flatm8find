@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { firestore } from '../auth';
 import { doc, getDoc, updateDoc } from 'firebase/firestore';
 import { useParams, useNavigate } from 'react-router-dom';
+import Layout from '../components/Layout';
 
 const EditListingPage = () => {
   const { id } = useParams();
@@ -60,6 +61,8 @@ const EditListingPage = () => {
   if (error) return <p>{error}</p>;
 
   return (
+    <Layout>
+
     <div className="p-6 max-w-3xl mx-auto mt-10 bg-white shadow-md rounded-lg">
       <h2 className="text-2xl font-bold mb-4">Edit Listing</h2>
 
@@ -89,7 +92,7 @@ const EditListingPage = () => {
           value={updatedListing.rent || ''}
           onChange={handleChange}
           className="w-full p-2 border border-gray-300 rounded mb-4"
-        />
+          />
 
         <label>Gender Preference</label>
         <select
@@ -97,7 +100,7 @@ const EditListingPage = () => {
           value={updatedListing.genderPref || ''}
           onChange={handleChange}
           className="w-full p-2 border border-gray-300 rounded mb-4"
-        >
+          >
           <option value="">Select Gender Preference</option>
           <option value="Male">Male</option>
           <option value="Female">Female</option>
@@ -110,7 +113,7 @@ const EditListingPage = () => {
           value={updatedListing.description || ''}
           onChange={handleChange}
           className="w-full p-2 border border-gray-300 rounded mb-4"
-        />
+          />
 
         <label>Contact Info</label>
         <input
@@ -129,6 +132,7 @@ const EditListingPage = () => {
         </button>
       </div>
     </div>
+          </Layout>
   );
 };
 

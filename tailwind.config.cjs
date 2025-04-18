@@ -1,35 +1,26 @@
-/** @type {import('tailwindcss').Config} */
-export default {
-  content: [
-    "./index.html",
-    "./src/**/*.{js,ts,jsx,tsx}",
-  ],
+// tailwind.config.js
+const defaultTheme = require('tailwindcss/defaultTheme');
+
+module.exports = {
+  content: ['./index.html', './src/**/*.{js,jsx}'],
   theme: {
     extend: {
+      fontFamily: {
+        sans: ['Poppins', ...defaultTheme.fontFamily.sans],
+      },
       colors: {
         dusk: {
-          50: '#f7f7fb',
-          100: '#ebebf3',
-          200: '#dcdcea',
-          300: '#c5c4da',
-          400: '#a9a6c6',
-          500: '#8d89b2',
-          600: '#736f98',
-          700: '#5c597b',
-          800: '#4c4863',
-          900: '#3e3b50',
+          900: '#0f1115',
+          800: '#1a1d22',
+          700: '#262a31',
+          600: '#32363f',
+          500: '#3e434e',
+          400: '#4a505d',
+          300: '#666c7a',
         },
-        primary: '#6c63ff',
-        secondary: '#f50057',
-        background: '#f9f9fc',
-        surface: '#ffffff',
-        muted: '#7c7c8a',
-        border: '#e2e2ea',
-      },
-      fontFamily: {
-        sans: ['Poppins', 'sans-serif'],
+        accent: '#FF6B6B',
       },
     },
   },
   plugins: [],
-}
+};
