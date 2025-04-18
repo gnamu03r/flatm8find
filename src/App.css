@@ -591,8 +591,11 @@ img {
     }
     
     .footer{
-      margin-left: -0.6rem;
-      font-size: 0.6rem;
+      /* margin-left: -0.6rem; */
+      font-size: 0.8rem;
+      justify-self: center;
+      align-items: center;
+      margin-left: 1.6rem;
     }
 
 }

@@ -9,7 +9,7 @@ const firebaseConfig = {
     apiKey: "AIzaSyAQjiXcCQQR30R9asnVEtDpZNnVO_XC2Ic",
     authDomain: "flatmate-finder-684fc.firebaseapp.com",
     projectId: "flatmate-finder-684fc",
-    storageBucket: "flatmate-finder-684fc.firebasestorage.app",
+    storageBucket: "flatmate-finder-684fc.appspot.app",
     messagingSenderId: "470498479802",
     appId: "1:470498479802:web:3bef5363c08ce09dbf3c83",
     measurementId: "G-GYBWJ0SXX3"

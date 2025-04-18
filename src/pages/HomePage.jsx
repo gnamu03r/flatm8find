@@ -36,7 +36,6 @@ const ListingCard = ({ listing, handleViewDetailsClick }) => {
   };
 
   const photoCount = listing.images?.length || 0;
-  console.log(photoCount);
 
   return (
     <div className="home_card">

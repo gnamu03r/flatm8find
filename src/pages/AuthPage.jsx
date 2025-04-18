@@ -1,16 +1,43 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { loginWithGoogle } from "../auth"; // Import Google login
+import { getRedirectResult } from "firebase/auth";
+import { auth, loginWithGoogle, saveUserProfile } from "../auth"; // Import Google login
 import Layout from "../components/Layout";
+import { useEffect } from "react";
 
 const AuthPage = () => {
   const [error, setError] = useState("");
   const navigate = useNavigate();
 
+  useEffect(() => {
+    getRedirectResult(auth)
+      .then(async (result) => {
+        if (result?.user) {
+          const user = result.user;
+  
+          // Save Google user to Firestore (only if new)
+          await saveUserProfile(user.uid, {
+            name: user.displayName,
+            email: user.email,
+            photoURL: user.photoURL,
+          });
+  
+          console.log("Redirect login successful:", user);
+          navigate("/profile");
+        }
+      })
+      .catch((err) => {
+        console.error("Redirect login error:", err);
+        setError("Google login failed. Please try again.");
+      });
+  }, []);
+  
+  
+
   const handleGoogleLogin = async () => {
     try {
       await loginWithGoogle();
-      navigate("/profile");
+      // navigate("/profile");
     } catch (err) {
       setError("Google login failed. Please try again.");
     }

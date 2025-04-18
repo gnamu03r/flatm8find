@@ -1,10 +1,11 @@
+import { firestore, storage } from './firebase'; // already initialized
 import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
   GoogleAuthProvider,
-  signInWithPopup,
   signInWithPhoneNumber,
   RecaptchaVerifier,
+  signInWithRedirect,
 } from 'firebase/auth';
 import { auth } from './firebase';
 import {
@@ -14,7 +15,6 @@ import {
   getDoc,
   updateDoc,
 } from 'firebase/firestore';
-import { firestore, storage } from './firebase'; // already initialized
 
 // ------------------ USER PROFILE FUNCTIONS ------------------
 
@@ -81,25 +81,17 @@ export const loginUser = async (email, password) => {
 };
 
 // Google sign-in
+// DO NOT await the result or use result.user directly
 export const loginWithGoogle = async () => {
   const provider = new GoogleAuthProvider();
   try {
-    const result = await signInWithPopup(auth, provider);
-    const user = result.user;
-
-    // Optional: Save Google user to Firestore (only if new)
-    await saveUserProfile(user.uid, {
-      name: user.displayName,
-      email: user.email,
-      photoURL: user.photoURL,
-    });
-
-    return result;
+    await signInWithRedirect(auth, provider); // just start redirect
   } catch (error) {
     console.error('Error with Google sign-in:', error.message);
     throw new Error(error.message);
   }
 };
+
 
 // Setup reCAPTCHA
 export const setupRecaptcha = (containerId = 'recaptcha-container') => {
