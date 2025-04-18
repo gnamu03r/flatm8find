@@ -427,11 +427,23 @@ img {
       
     }
     .view_btn{
-        font-size: 0.5rem;
+        font-size: 0.6rem;
         border-radius: 1em;
         padding: 0.2rem;
-        margin-right: 0;
-        margin-left: 0;
+        width: 50%;
+        align-items: center;
+        justify-content: center;
+        margin-left: 3.7rem;
+    }
+    .listing_info2{
+      display: grid;
+      grid-template-columns: 1fr;
+      justify-content: center;
+      /* justify-content: space-evenly; */
+    }
+
+    .listing_stats{
+      justify-content: space-evenly;
     }
 
     .listing_info{
@@ -442,12 +454,12 @@ img {
         grid-template-columns: 1fr;
     }
     .listing_day{
-      font-size: 0.5rem;
+      font-size: 0.6rem;
       margin-bottom: 0;
       margin-top: 0.3rem;
     }
     .main_window{
-      margin-left: 2rem;
+      margin-left: 3rem;
     }
 
    
@@ -458,11 +470,11 @@ img {
       padding: 0;
       display: grid;
       grid-template-columns: 1fr;
-      /* margin-left: -1rem; */
+      margin-left: 1rem;
 
     }
     .nav_header h1{
-      font-size: 0.7rem;
+      font-size: 1.1rem;
       margin-top: 0.5rem;
       margin-bottom: 0;
       padding: 0;
@@ -476,25 +488,25 @@ img {
 
     
     .nav_title img{
-      width: 0.88rem;
-      height: 0.88rem;
+      width: 1.4rem;
+      height: 1.4rem;
       padding: 0rem;
       margin-right: 0.1rem;
   
     }
 
     .nav_item{
-      padding: 0.11rem;
-      font-size: 0.42rem;
+      padding: 0.3rem;
+      font-size: 0.6rem;
      
     }
     .btn{
-      padding: 0.11rem;
-      font-size: 0.42rem;
+      padding: 0.3rem;
+      font-size: 0.6rem;
     }
 
     .listing_available h2{
-      font-size: 0.4rem;
+      font-size: 0.8rem;
       margin-top: 0.5rem;
       margin-left: -1rem;
     }
@@ -506,7 +518,7 @@ img {
       margin-left: -0.5rem;
     }
     .listing_search{
-      font-size: 0.35rem;
+      font-size: 0.7rem;
       padding: 0.1rem;
       width: 80%;
       margin-bottom: 0.3rem;
@@ -518,15 +530,21 @@ img {
         font-size: 0.3rem;
     }
     .sort_select{
-      font-size: 0.3rem;
+      font-size: 0.6rem;
       /* width: 80%; */
     }
     .filter_select{
-      font-size: 0.3rem;
+      font-size: 0.6rem;
       /* width: 80%; */
       /* margin-left: -2rem;   */
       
     }
+    option{
+      font-size: 0.3rem;
+      padding: 0;
+      margin: 0;
+    }
+
     .listing_control{
       display: grid;
       grid-template-columns: 1fr;
