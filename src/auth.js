@@ -81,16 +81,19 @@ export const loginUser = async (email, password) => {
 };
 
 // Google sign-in
-// DO NOT await the result or use result.user directly
+// DO NOT await the result or use result.user directlyexport const loginWithGoogle = () => {
+// auth.js
 export const loginWithGoogle = async () => {
   const provider = new GoogleAuthProvider();
   try {
-    await signInWithRedirect(auth, provider); // just start redirect
+    const result = await signInWithPopup(auth, provider);
+    // Handle successful sign-in
   } catch (error) {
-    console.error('Error with Google sign-in:', error.message);
-    throw new Error(error.message);
+    console.error('Error during sign-in:', error);
   }
 };
+
+  
 
 
 // Setup reCAPTCHA

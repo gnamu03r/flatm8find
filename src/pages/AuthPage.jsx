@@ -11,26 +11,16 @@ const AuthPage = () => {
 
   useEffect(() => {
     getRedirectResult(auth)
-      .then(async (result) => {
-        if (result?.user) {
-          const user = result.user;
-  
-          // Save Google user to Firestore (only if new)
-          await saveUserProfile(user.uid, {
-            name: user.displayName,
-            email: user.email,
-            photoURL: user.photoURL,
-          });
-  
-          console.log("Redirect login successful:", user);
-          navigate("/profile");
+      .then((result) => {
+        if (result && result.user) {
+          // User signed in successfully.
+          navigate('/profile');
         }
       })
-      .catch((err) => {
-        console.error("Redirect login error:", err);
-        setError("Google login failed. Please try again.");
+      .catch((error) => {
+        console.error('Error during getRedirectResult:', error);
       });
-  }, []);
+  }, [navigate]);
   
   
 
