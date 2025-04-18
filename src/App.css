@@ -421,8 +421,8 @@ img {
       margin: 0;
       padding: 0;
       /* padding: 0.5rem; */
-      margin-left: 1.5rem;
-      min-width: 12rem;
+      /* margin-left: 1.5rem; */
+      min-width: 18rem;
       width: 100%;
       
     }
@@ -459,7 +459,7 @@ img {
       margin-top: 0.3rem;
     }
     .main_window{
-      margin-left: 3rem;
+      margin-left: 3.5rem;
     }
 
    
