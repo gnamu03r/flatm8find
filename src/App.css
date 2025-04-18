@@ -412,10 +412,10 @@ img {
 }
 
 /* For small devices */
-@media screen and (max-width: 400px) {
+@media screen and (max-width: 450px) {
 
   html{
-    font-size: 1rem;
+    font-size: 1.2rem;
   }
   body{
       margin: 0;
