@@ -29,7 +29,7 @@ const App = () => {
 
   return (
     <Router>
-      <div className="min-h-screen bg-gray-100">
+      <div className="nav_window">
         {/* Navigation Bar */}
         <nav className="nav_bar">
           <div className="nav_header">

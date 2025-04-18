@@ -415,7 +415,7 @@ img {
 @media screen and (max-width: 768px) {
 
   html{
-    font-size: 1.2rem;
+    font-size: 1.3rem;
   }
   body{
       margin: 0;
@@ -423,6 +423,7 @@ img {
       /* padding: 0.5rem; */
       margin-left: 1.5rem;
       min-width: 12rem;
+      width: 100%;
       
     }
     .view_btn{
@@ -446,7 +447,7 @@ img {
       margin-top: 0.3rem;
     }
     .main_window{
-      margin-left: -0.8rem;
+      margin-left: 2rem;
     }
 
    
@@ -457,7 +458,8 @@ img {
       padding: 0;
       display: grid;
       grid-template-columns: 1fr;
-      margin-left: -2rem;
+      /* margin-left: -1rem; */
+
     }
     .nav_header h1{
       font-size: 0.7rem;
@@ -466,6 +468,10 @@ img {
       padding: 0;
       align-items: center;
       justify-content: center;
+    }
+
+    .nav_window{
+      margin-left: -2rem;
     }
 
     
