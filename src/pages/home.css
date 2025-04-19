@@ -186,9 +186,16 @@ option{
 @media screen and (max-width: 768px) {
 
     .listing_available{
+        display: block;
+        /* grid-template-columns: 1fr; */
         justify-content: center;
         align-items: center;
-        margin-left: 3.9rem;
+        /* margin-right: 0rem; */
+        margin-left: 1.8rem;
+
+    }
+    .listing_control{
+        margin-left: -0.5rem;
     }
 
 }
