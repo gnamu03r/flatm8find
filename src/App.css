@@ -416,6 +416,7 @@ img {
 
   html{
     font-size: 1.3rem;
+    margin-left: 0rem;
   }
   body{
       margin: 0;
@@ -424,6 +425,7 @@ img {
       /* margin-left: 1.5rem; */
       min-width: 18rem;
       width: 100%;
+      margin-left: 0rem;
       
     }
     .view_btn{
@@ -459,7 +461,7 @@ img {
       margin-top: 0.3rem;
     }
     .main_window{
-      margin-left: 3.5rem;
+      /* margin-left: 3.5rem; */
     }
 
    
