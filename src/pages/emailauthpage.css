@@ -115,7 +115,7 @@ form{
     /* margin: 2rem; */
     box-shadow: 0 0 10px rgba(0,0,0,0.2);
     justify-self: center;
-    margin-left: 0rem;
+    margin-left: 2rem;
     /* height: 13rem; */
 }
 
@@ -124,7 +124,7 @@ h2{
     font-size: 1.1rem;
     justify-self: center;
     margin-top: -0.3rem;
-    margin-left: -2rem;
+    /* margin-left: -2rem; */
     margin-bottom: -1.8rem;
 }
 
