@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { loginWithGoogle } from "../auth"; // Import Google login
 import Layout from "../components/Layout";
+import '../pages/authpage.css';
 
 const AuthPage = () => {
   const [error, setError] = useState("");
@@ -27,33 +28,41 @@ const AuthPage = () => {
   return (
     <Layout>
 
-    <div className="p-6 max-w-sm mx-auto mt-10 bg-white shadow-md rounded-lg">
-      <h2 className="text-2xl font-bold mb-4 text-center">Welcome to AuthPage</h2>
-      {error && <p className="text-red-500 text-sm mb-2">{error}</p>}
+      <div className="auth_window">
+        <h2 className="title">Looking for a Flatmate?</h2>
+        {error && <p className="text-red-500 text-sm mb-2">{error}</p>}
+        <div className="card">
 
-      <button
-        onClick={handleGoogleLogin}
-        className="w-full bg-red-500 text-white p-2 rounded-md mb-4"
-      >
-        Continue with Google
-      </button>
+          <button
+            onClick={handleGoogleLogin}
+            className="item google"
+          >
+            <i class='icon bx bxl-google'></i>
+            Continue with Google
 
-      <hr className="my-4" />
+          </button>
 
-      <button
-        onClick={handleEmailLogin}
-        className="w-full bg-blue-500 text-white p-2 rounded-md mb-4"
-      >
-        Continue with Email
-      </button>
+          <hr className="my-4" />
 
-      <button
-        onClick={handlePhoneLogin}
-        className="w-full bg-yellow-500 text-white p-2 rounded-md"
-      >
-        Continue with Phone Number
-      </button>
-    </div>
+          <button
+            onClick={handleEmailLogin}
+            className="item mail"
+          >
+          <i class='icon bx bx-envelope'></i>
+            Continue with Email
+
+          </button>
+
+          <button
+            onClick={handlePhoneLogin}
+            className="item phone"
+          >
+            <i class='icon bx bx-mobile-alt'></i>
+            Continue with Phone Number
+
+          </button>
+        </div>
+      </div>
     </Layout>
   );
 };

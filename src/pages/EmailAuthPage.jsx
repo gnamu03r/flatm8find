@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { loginUser, signupUser } from "../auth"; // Import functions for email login/signup
 import Layout from "../components/Layout";
+import './emailauthpage.css';
 
 const EmailAuthPage = () => {
   const [mode, setMode] = useState("login"); // 'login' or 'signup'
@@ -29,55 +30,57 @@ const EmailAuthPage = () => {
   return (
     <Layout>
       
-    <div className="p-6 max-w-sm mx-auto mt-10 bg-white shadow-md rounded-lg">
-      <h2 className="text-2xl font-bold mb-4 text-center">{mode === "login" ? "Login" : "Sign Up"}</h2>
+    <div className="ea_win">
+      <h2 className="ea_title">{mode === "login" ? "Login" : "Sign Up"}</h2>
       {error && <p className="text-red-500 text-sm mb-2">{error}</p>}
+      <div className="ea_card">
 
       <form onSubmit={handleAuth}>
         {mode === "signup" && (
-          <div className="mb-4">
-            <label className="block text-sm font-medium text-gray-700">Full Name</label>
+          <div className="entry">
+            <label className="ea_subtitle">Full Name</label>
             <input
               type="text"
-              className="w-full px-4 py-2 mt-2 border border-gray-300 rounded-md"
+              className="namebox"
               value={name}
               onChange={(e) => setName(e.target.value)}
               required
-            />
+              />
           </div>
         )}
-        <div className="mb-4">
-          <label className="block text-sm font-medium text-gray-700">Email</label>
+        <div className="entry email_entry">
+          <label className="ea_subtitle">Email</label>
           <input
             type="email"
-            className="w-full px-4 py-2 mt-2 border border-gray-300 rounded-md"
+            className="emailbox"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             required
-          />
+            />
         </div>
-        <div className="mb-6">
-          <label className="block text-sm font-medium text-gray-700">Password</label>
+        <div className="entry">
+          <label className="ea_subtitle">Password</label>
           <input
             type="password"
-            className="w-full px-4 py-2 mt-2 border border-gray-300 rounded-md"
+            className="passwordbox"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             required
             />
         </div>
-        <button type="submit" className="w-full bg-blue-500 text-white p-2 rounded-md">
+        <button type="submit" className="ea_loginbtn">
           {mode === "login" ? "Login" : "Sign Up"}
         </button>
       </form>
 
-      <p className="mt-4 text-center">
+      <p className="ea_subfooter">
         {mode === "login" ? (
-          <>Don't have an account? <span onClick={() => setMode("signup")} className="text-blue-500 cursor-pointer">Sign up</span></>
+          <>Don't have an account? <span onClick={() => setMode("signup")} className="alr">Sign up</span></>
         ) : (
-          <>Already have an account? <span onClick={() => setMode("login")} className="text-blue-500 cursor-pointer">Login</span></>
+          <>Already have an account? <span onClick={() => setMode("login")} className="alrn">Login</span></>
         )}
       </p>
+        </div>
     </div>
           </Layout>
   );
