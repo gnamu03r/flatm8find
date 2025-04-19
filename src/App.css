@@ -125,6 +125,7 @@ img {
   top: 0;
   z-index: 1;
   background: var(--body-color);
+  margin-left: -0.1rem;
 }
 
 
