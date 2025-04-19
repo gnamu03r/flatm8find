@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { sendOTP, verifyOTP } from "../auth"; // Import functions for OTP
 import Layout from "../components/Layout";
+import './phoneauthpage.css'
 
 const PhoneAuthPage = () => {
   const [phone, setPhone] = useState("");
@@ -32,21 +33,21 @@ const PhoneAuthPage = () => {
   return (
     <Layout>
 
-    <div className="p-6 max-w-sm mx-auto mt-10 bg-white shadow-md rounded-lg">
-      <h2 className="text-2xl font-bold mb-4 text-center">Phone Authentication</h2>
+    <div className="phone_win">
+      <h2 className="phone_title">Phone Authentication</h2>
       {error && <p className="text-red-500 text-sm mb-2">{error}</p>}
 
-      <div>
+      <div className="phone_card">
         <input
           type="text"
           placeholder="Enter phone (10 digit)"
-          className="w-full px-4 py-2 mb-2 border border-gray-300 rounded-md"
+          className="phone_box"
           value={phone}
           onChange={(e) => setPhone(e.target.value)}
         />
         <button
           onClick={handleSendOtp}
-          className="w-full bg-yellow-500 text-white p-2 rounded-md mb-2"
+          className="phone_btn"
         >
           Send OTP
         </button>
@@ -61,7 +62,7 @@ const PhoneAuthPage = () => {
             />
             <button
               onClick={handleVerifyOtp}
-              className="w-full bg-green-600 text-white p-2 rounded-md"
+              className="phone_btn"
               >
               Verify OTP
             </button>
