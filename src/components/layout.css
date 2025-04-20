@@ -2,16 +2,18 @@
     position: fixed;
     bottom: 0;
     left: 0;
+    /* margin-bottom: -2rem; */
     width: 100%;
     font-size: 1.2rem !important;
     /* margin-left: -0.2rem !important; */
     /* justify-self: center; */
+    z-index: -100;
 }  
 
 
 @media screen and (max-width: 768px){
     .footer{
-        position: fixed;
+        /* position: fixed; */
         bottom: 0;
         left: 0;
         width: 100%;

@@ -1,0 +1,325 @@
+.ld_window {
+    display: flex;
+    flex-direction: column;
+    margin-top: 3rem;
+    border-radius: 1.5rem;
+    padding: 2rem;
+    background-color: var(--body-color);
+    box-shadow: 0 0 1.2rem rgba(0, 0, 0, 0.15);
+    gap: 2rem;
+    max-width: 70rem;
+    margin-inline: auto;
+  }
+  
+  .ld_titleimg {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    object-fit: fill;
+  }
+  
+  .ld_title {
+    font-size: 1.75rem;
+    font-weight: bold;
+    color: var(--text-color);
+    margin: 0.5rem 0;
+    text-align: center;
+    margin-bottom: -1.5rem;
+  }
+  
+  .ld_swiper {
+    width: 100%;
+    max-width: 35rem;
+    border-radius: 1rem;
+    overflow: hidden;
+  }
+  
+  .ld_imagecard {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    justify-self: center;
+    margin: 1rem;
+    padding: 1rem;
+    border-radius: 2rem;
+    background-color: var(--body-color);
+    height: 30rem;
+    width: 30rem;
+    /* object-fit: contain; */
+  }
+  
+  .ld_imagecard img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 1rem;
+  }
+  
+  .ld_buttons {
+    display: flex;
+    justify-content: space-evenly;
+    /* gap: 1.5rem; */
+    width: 100%;
+    max-width: 35rem;
+    margin: 0 auto;
+    align-items: center;
+    text-align: center;
+  }
+  
+  .ld_upvote {
+    background-color: #808080;
+    padding: 0.5rem 1rem;
+    color: white;
+    border-radius: 1rem;
+    /* font-weight: 500; */
+    font-size: 0.9rem;
+    display: flex;  
+    gap: 0.5rem;
+    /* flex-direction: column; */
+    align-items: center;
+    transition: 0.2s ease-in-out;
+  }
+  
+  .ld_upvote:hover {
+    background-color: #9f9f9f;
+  }
+  
+  .ld_views {
+    /* font-size: 0.95rem; */
+    color: #888;
+    /* margin-top: auto; */
+  }
+  
+  .ld_details {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    padding: 1.5rem;
+    background-color: white;
+    border-radius: 1rem;
+    box-shadow: 0 0 0.8rem rgba(0, 0, 0, 0.05);
+  }
+  
+  .ld_des,
+  .ld_rent,
+  .ld_gender,
+  .ld_contact {
+    font-size: 1rem;
+    color: #333;
+    line-height: 1.4;
+  }
+  
+  .ld_des {
+    /* font-weight: 500; */
+    /* font-size: 1.2rem; */
+    background-color: rgb(241, 241, 241);
+    padding: 1rem;
+    border-radius: 1rem;
+    width: 100%;
+    text-align: center;
+    font-style: italic;
+  }
+  .ld_rent {
+    font-weight: 600;
+    font-size: 1.2rem;
+  }
+
+  .ld_contact{
+    font-weight: 500;
+    font-size: 1rem;
+    margin-top: 0.5rem;
+    background-color: rgb(37, 37, 37);
+    color: white;
+    padding: 0.5rem 1.5rem;
+    border-radius: 2rem;
+    cursor: pointer;
+  }
+
+  .ld_contact:hover{
+    background-color: rgb(245, 244, 244);
+    color: black;
+    transition: 0.5s ease-in-out;
+  }
+
+  .ld_swiper{
+    width: 35rem;
+    /* color: black; */
+}
+
+.swiper-button-next,
+ .swiper-button-prev  {
+    color: black;
+}
+
+.swiper-button-next:hover,
+.swiper-button-prev:hover {
+    color: rgb(167, 167, 167);
+    transition: 0.3s ease-in-out;
+}
+
+.swiper-button-next:after, 
+.swiper-button-prev:after {
+    font-size: 2rem;
+    color: black;
+}
+  
+  @media (max-width: 768px) {
+    .ld_window {
+      padding: 1rem;
+    }
+  
+    .ld_buttons {
+      flex-direction: column;
+      align-items: center;
+    }
+  
+    .ld_swiper,
+    .ld_imagecard {
+      width: 100%;
+      height: auto;
+    }
+  }
+  
+
+/* Modal overlay background */
+.ld_modal_overlay {
+    position: fixed;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.75);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 50;
+    animation: fadeIn 0.25s ease-in-out;
+  }
+  
+  /* Modal card wrapper */
+  .ld_modal_card {
+    position: relative;
+    /* background-color: #fff; */
+    /* padding: 1rem; */
+    border-radius: 1rem;
+    /* box-shadow: 0 0 30px rgba(0, 0, 0, 0.6); */
+    max-width: 90vw;
+    max-height: 90vh;
+    width: 100%;
+    overflow: hidden;
+    animation: scaleIn 0.25s ease-in-out;
+  }
+  
+  /* Modal image */
+  /* .ld_modal_image {
+    max-width: 100%;
+    max-height: 80vh;
+    object-fit: contain;
+    border-radius: 0.75rem;
+  }
+   */
+  /* Close button */
+  /* .ld_modal_close {
+    position: absolute;
+    top: 0.5rem;
+    right: 0.5rem;
+    background-color: rgba(255, 255, 255, 0.9);
+    color: #000;
+    border: none;
+    border-radius: 9999px;
+    width: 2rem;
+    height: 2rem;
+    font-size: 1.25rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.2s;
+  } */
+  
+  /* .ld_modal_close:hover {
+    background-color: #fff;
+  } */
+  
+  /* Animations */
+  @keyframes fadeIn {
+    from { opacity: 0 }
+    to { opacity: 1 }
+  }
+  
+  @keyframes scaleIn {
+    from {
+      transform: scale(0.95);
+      opacity: 0;
+    }
+    to {
+      transform: scale(1);
+      opacity: 1;
+    }
+  }
+  
+  /* Swiper inside modal */
+.ld_modal_swiper {
+    width: 100%;
+    height: 100%
+  }
+
+  .ld_modal_swiper .swiper-button-prev:after,
+.ld_modal_swiper .swiper-button-next:after {
+  color: white;
+  font-size: 2.5rem;
+  font-weight: bolder;
+}
+
+  
+  .ld_modal_image {
+    max-width: 100%;
+    max-height: 75vh;
+    object-fit: contain;
+    border-radius: 0.75rem;
+    margin: 0 auto;
+    display: block;
+  }
+  
+  /* Close button */
+  .ld_modal_close {
+    position: absolute;
+    top: 0.5rem;
+    right: 0.5rem;
+    background-color: rgba(255, 255, 255, 0.9);
+    color: #000;
+    border: none;
+    border-radius: 9999px;
+    width: 2rem;
+    height: 2rem;
+    font-size: 1.25rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.2s;
+    z-index: 10;
+  }
+  
+  .ld_modal_close:hover {
+    background-color: #fff;
+  }
+  
+  /* Animations */
+  @keyframes fadeIn {
+    from { opacity: 0 }
+    to { opacity: 1 }
+  }
+  
+  @keyframes scaleIn {
+    from {
+      transform: scale(0.95);
+      opacity: 0;
+    }
+    to {
+      transform: scale(1);
+      opacity: 1;
+    }
+  }
+  
+
+  .ld_contact {
+    transition: color 0.3s ease, opacity 0.3s ease;
+  }
+  

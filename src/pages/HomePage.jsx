@@ -11,7 +11,7 @@ import {
 } from 'firebase/firestore';
 import { Link } from 'react-router-dom';
 import Layout from '../components/Layout';
-import defaultImage from '../assets/home-button2.png';
+import defaultImage from '../assets/home-button4.png';
 
 const DEFAULT_IMAGE = defaultImage;
 

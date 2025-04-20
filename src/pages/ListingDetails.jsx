@@ -4,7 +4,14 @@ import { doc, getDoc, updateDoc } from 'firebase/firestore';
 import { useParams } from 'react-router-dom';
 import { useAuth } from '../hooks/useAuth';
 import { arrayUnion, arrayRemove } from 'firebase/firestore';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Navigation, Pagination } from 'swiper/modules';
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
 import Layout from '../components/Layout';
+import './listingdetails.css';
+import DEFAULT_IMAGE from '../assets/home-button3.png';
 
 const ListingDetails = () => {
   const { id } = useParams();
@@ -13,6 +20,9 @@ const ListingDetails = () => {
   const [userUpvoted, setUserUpvoted] = useState(false);
   const [upvoteCount, setUpvoteCount] = useState(0);
   const [views, setViews] = useState(0);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [activeImage, setActiveImage] = useState(null);
+  const [copied, setCopied] = useState(false); // for visual feedback
 
   useEffect(() => {
     const fetchListing = async () => {
@@ -36,6 +46,12 @@ const ListingDetails = () => {
 
     fetchListing();
   }, [id, currentUser]);
+
+  const handleCopyContact = () => {
+    navigator.clipboard.writeText(listing.contactInfo);
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000); // show "Copied!" for 2 seconds
+  };
 
   const handleUpvote = async () => {
     if (!currentUser) {
@@ -66,43 +82,55 @@ const ListingDetails = () => {
   const isOwnListing = currentUser && listing.uid === currentUser.uid;
 
   return (
+
     <Layout>
 
-    <div className="max-w-3xl mx-auto p-6 mt-10 bg-white shadow-md rounded-lg">
-      <h2 className="text-2xl font-bold mb-4">{listing.area} - {listing.roomType}</h2>
+    <div className="ld_window">
+      <div className='ld_titleimg'>
+      <h2 className="ld_title">{listing.area} - {listing.roomType}</h2>
 
       {/* Image Grid */}
-      <div className="mt-4 grid grid-cols-2 md:grid-cols-3 gap-4">
-        {listing.images && listing.images.length > 0 ? (
-          listing.images.map((imgObj, index) => (
-            <img
-              key={index}
-              src={imgObj.url}
-              alt={`Listing Image ${index + 1}`}
-              className="w-full h-48 object-cover rounded-md"
-            />
-          ))
-        ) : (
-          <p>No images available</p>
-        )}
+      <Swiper
+  modules={[Navigation, Pagination]}
+  spaceBetween={10}
+  slidesPerView={1}
+  navigation
+  pagination={{ clickable: true }}
+  className="ld_swiper"
+>
+  {listing.images && listing.images.length > 0 ? (
+    listing.images.map((imgObj, index) => (
+      <SwiperSlide key={index}>
+       <img
+  src={imgObj.url}
+  alt={`Listing Image ${index + 1}`}
+  className="ld_imagecard cursor-pointer"
+  onClick={() => {
+    setActiveImage(imgObj.url);
+    setIsModalOpen(true);
+  }}
+/>
+
+      </SwiperSlide>
+    ))
+  ) : (
+    <SwiperSlide>
+      <div className="ld_imagecard">
+        <img src={DEFAULT_IMAGE} alt="Placeholder" />
       </div>
-
-      <div className="p-4 space-y-2">
-        <p className="text-lg font-semibold">Rent: ₹{listing.rent}</p>
-        <p className="text-sm">Gender Preference: {listing.genderPref}</p>
-        <p className="text-sm">Description: {listing.description}</p>
-        <p className="text-sm">Contact: {listing.contactInfo}</p>
-
-        <div className="flex justify-between items-center mt-4">
+    </SwiperSlide>
+  )}
+</Swiper>
+<div className="ld_buttons">
           {/* 👍 Upvote Button */}
           {isOwnListing ? (
-            <button className="text-gray-400 cursor-not-allowed" disabled>
+            <button className="ld_upvote text-gray-400 cursor-not-allowed" disabled>
               Upvote (Disabled for your own listing)
             </button>
           ) : (
             <button
-              onClick={handleUpvote}
-              className={`text-yellow-500 hover:text-yellow-600 ${userUpvoted ? 'font-bold' : ''}`}
+            onClick={handleUpvote}
+            className={`ld_upvote text-yellow-500 hover:text-yellow-600 ${userUpvoted ? 'font-bold' : ''}`}
             >
               {userUpvoted ? 'Unvote' : 'Upvote'}
               <p className="text-sm">{upvoteCount}</p>
@@ -110,10 +138,65 @@ const ListingDetails = () => {
           )}
 
           {/* Display views count */}
-          <p className="text-sm">Views: {views}</p>
-        </div>
-      </div>
+          <p className="ld_views">Views: {views}</p>
+          </div>
+  </div>
+
+  
+
+      <div className="ld_details">
+        <p className="ld_des text-sm">Description: {listing.description}</p>
+        <p className="ld_rent text-lg font-semibold">Rent: ₹{listing.rent}</p>
+        <p className="ld_gender text-sm">Gender Preference: {listing.genderPref}</p>
+        <button
+  onClick={handleCopyContact}
+  className="ld_contact text-sm transition duration-200"
+>
+  {copied ? 'Copied!' : `Contact/Insta: ${listing.contactInfo}`}
+</button>
+
+
+          </div>
+       
     </div>
+    {isModalOpen && (
+  <div className="ld_modal_overlay">
+    <div className="ld_modal_card swiper-container">
+      <Swiper
+        modules={[Navigation, Pagination]}
+        spaceBetween={10}
+        slidesPerView={1}
+        navigation
+        pagination={{ clickable: true }}
+        className="ld_modal_swiper"
+        initialSlide={
+          listing.images.findIndex(img => img.url === activeImage) || 0
+        }
+      >
+        {listing.images.map((imgObj, index) => (
+          <SwiperSlide key={index}>
+            <img
+              src={imgObj.url}
+              alt={`Slide ${index + 1}`}
+              className="ld_modal_image"
+            />
+          </SwiperSlide>
+        ))}
+      </Swiper>
+
+      <button
+        onClick={() => setIsModalOpen(false)}
+        className="ld_modal_close"
+      >
+        ✕
+      </button>
+    </div>
+  </div>
+)}
+
+
+
+  
     </Layout>
   );
 };

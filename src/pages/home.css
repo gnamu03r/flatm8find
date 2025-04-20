@@ -6,7 +6,7 @@ body{
 }
 
 .home_card{
-    width: 100%;
+    width: 80%;
     max-width: 89%;
     background-color: white;
     display: grid;
@@ -20,6 +20,8 @@ body{
 .home_card:hover{
     box-shadow: 0 0 1rem rgba(0,0,0,0.2);
     transition: box-shadow 0.6s ease;
+    background-color: rgb(250, 250, 250);
+    transition: 0.3s ease-in-out;
 }
 
 .card_image{
@@ -51,7 +53,7 @@ body{
 }
 
 .listing_name{
-    
+    font-weight: var(--font-medium);
 }
 
 .listing_rent{
@@ -70,11 +72,12 @@ body{
 
 .view_btn{
     padding: 0.5rem 1rem;
-    background-color: rgb(158, 158, 158);
+    background-color: rgb(70, 70, 70);
     color: #fff;
     border: none;
     border-radius: 1.5rem;
     cursor: pointer;
+    font-weight: var(--font-medium);
 }
 
 .view_btn:hover{
@@ -97,10 +100,6 @@ body{
 
 
 
-
-
-
-
 .listing_available{
   
 }
@@ -117,6 +116,8 @@ body{
     font-size: 1.5rem;
     color: var(--text-color);
     text-align: center;
+    font-weight: var(--font-medium);
+    margin-bottom: 0.5rem;
 }
 
 .listing_control{
@@ -124,6 +125,7 @@ body{
      grid-template-columns: 2fr 1fr;
      align-items: center;
      padding-top: 0.3rem;
+     margin-bottom: 2rem;
 }
 
 .listing_search{
