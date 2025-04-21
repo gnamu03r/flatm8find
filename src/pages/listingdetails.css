@@ -173,18 +173,18 @@
   @media (max-width: 768px) {
     
     .ld_window {
-      padding: 1rem;
+      padding: 0.5rem;
       min-width: 10rem;
       margin: 1rem;
     }
     .ld_title{
       font-size: 1.2rem;
-      margin-top: 0;
+      margin-top: 0.5rem;
       margin-bottom: -2rem;
     }
     .ld_imagecard {
-      height: 13rem !important;
-      width: 13rem !important;
+      height: 12rem !important;
+      width: 12rem !important;
     }
     .ld_upvote{
       font-size: 0.7rem;
@@ -245,6 +245,11 @@
       /* margin-top: -2rem; */
       line-height: -1rem;
     }
+
+    .ld_swiper{
+      
+      /* color: black; */
+  }
 
     .swiper-button-next:after, 
 .swiper-button-prev:after {
