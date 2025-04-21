@@ -197,14 +197,20 @@ option{
 
     }
     .listing_control{
-        margin-left: -0.6rem;
+        margin-left: -1rem;
+        margin-bottom: 0.7em;
     }
     .listing_stats{
         margin-top: -1rem;
         margin-bottom: -0.8rem;
     }
+    .filter_select{
+        width: 100%;
+        margin-left: 0.5rem;
+    }
     .listing_info2{
         margin-top: 1rem;
     }
+    
 
 }
