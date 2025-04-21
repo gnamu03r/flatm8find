@@ -15,16 +15,6 @@ import defaultImage from '../assets/home-button4.png';
 
 const DEFAULT_IMAGE = defaultImage;
 
-const splitIntoColumns = (listings) => {
-  const left = [];
-  const right = [];
-  listings.forEach((item, idx) => {
-    if (idx % 2 === 0) left.push(item);
-    else right.push(item);
-  });
-  return [left, right];
-};
-
 const ListingCard = ({ listing, handleViewDetailsClick }) => {
   const getDaysAgo = (timestamp) => {
     if (!timestamp?.seconds) return null;
@@ -43,12 +33,10 @@ const ListingCard = ({ listing, handleViewDetailsClick }) => {
         <img
           src={listing.images?.[0]?.url || DEFAULT_IMAGE}
           alt="Listing"
-          className="w-full h-full object-cover rounded-t-md z=-1"
+          className="w-full h-full object-cover rounded-t-md"
         />
         {photoCount >= 1 && (
-          <div className="photo_cnt">
-            {photoCount}+ photos
-          </div>
+          <div className="photo_cnt">{photoCount}+ photos</div>
         )}
       </div>
       <div className="listing_info">
@@ -74,7 +62,6 @@ const ListingCard = ({ listing, handleViewDetailsClick }) => {
     </div>
   );
 };
-
 
 const HomePage = () => {
   const [listings, setListings] = useState([]);
@@ -132,16 +119,12 @@ const HomePage = () => {
       return 0;
     });
 
-  const [leftColumn, rightColumn] = splitIntoColumns(filteredAndSortedListings);
-
   return (
     <Layout>
       <div className="listing_available">
+        <h2 className="avl">Available Listings ({filteredAndSortedListings.length}+)</h2>
 
-          <h2 className="avl">Available Listings ({filteredAndSortedListings.length}+)</h2>
-
-        <div className='header2'>
-          {/* Controls */}
+        <div className="header2">
           <div className="listing_control">
             <input
               type="text"
@@ -149,58 +132,51 @@ const HomePage = () => {
               value={searchQuery}
               onChange={e => setSearchQuery(e.target.value)}
               className="listing_search"
-              />
+            />
             <div className="listing_sortfilter">
-              <div className='listing_sort'>
-                <select
-                  value={sortOption}
-                  onChange={e => setSortOption(e.target.value)}
-                  className="sort_select"
-                  >
-                  <option value="">Sort by</option>
-                  <option value="rent-asc">Rent: Low to High</option>
-                  <option value="rent-desc">Rent: High to Low</option>
-                  <option value="views-desc">Most Viewed</option>
-                  <option value="upvotes-desc">Most Upvoted</option>
-                  <option value="date-desc">Newest First</option>
-                </select>
-              </div>
-              <div className='listing_filter'>
-                <select
-                  value={genderFilter}
-                  onChange={e => setGenderFilter(e.target.value)}
-                  className="filter_select"
-                  >
-                  <option value="">Filter</option>
-                  <option value="female">Female-only</option>
-                  <option value="male">Male-only</option>
-                </select>
-              </div>
+              <select
+                value={sortOption}
+                onChange={e => setSortOption(e.target.value)}
+                className="sort_select"
+              >
+                <option value="">Sort by</option>
+                <option value="rent-asc">Rent: Low to High</option>
+                <option value="rent-desc">Rent: High to Low</option>
+                <option value="views-desc">Most Viewed</option>
+                <option value="upvotes-desc">Most Upvoted</option>
+                <option value="date-desc">Newest First</option>
+              </select>
+
+              <select
+                value={genderFilter}
+                onChange={e => setGenderFilter(e.target.value)}
+                className="filter_select"
+              >
+                <option value="">Filter</option>
+                <option value="female">Female-only</option>
+                <option value="male">Male-only</option>
+              </select>
             </div>
           </div>
         </div>
+        {filteredAndSortedListings.map(listing => (
+    <ListingCard
+      key={listing.id}
+      listing={listing}
+      handleViewDetailsClick={handleViewDetailsClick}
+    />
+  ))}
 
-        {/* Two-column layout */}
-        <div className="homepage_window">
-          <div className="homepage_column">
-            {leftColumn.map(listing => (
-              <ListingCard
-                key={listing.id}
-                listing={listing}
-                handleViewDetailsClick={handleViewDetailsClick}
-              />
-            ))}
-          </div>
-          <div className="homepage_column">
-            {rightColumn.map(listing => (
-              <ListingCard
-                key={listing.id}
-                listing={listing}
-                handleViewDetailsClick={handleViewDetailsClick}
-              />
-            ))}
-          </div>
-        </div>
+        {/* Single-column layout */}
+        {/* <div className="homepage_single_column">
+          {filteredAndSortedListings.map(listing => (
+            <ListingCard
+              key={listing.id}
+              listing={listing}
+              handleViewDetailsClick={handleViewDetailsClick}
+            />
+          ))}
+        </div> */}
       </div>
     </Layout>
   );
