@@ -38,8 +38,8 @@ const App = () => {
             <h1 className="nav_title">
               <Link to="/" className="logo_link">
                 <img className="logo" src={logoimage} alt="logo" />
+              <p className='logo_text1'>Flatmate</p><p className='logo_text2'>Finder</p>
               </Link>
-              FlatMate Finder
             </h1>
             <div className="nav_menu">
               <Link to="/" className="nav_item">Home</Link>

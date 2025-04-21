@@ -14,11 +14,14 @@
   /*Color mode HSL(hue, saturation, lightness)*/
   --hue: 0;
   --sat: 0%;
-  --text-color: #1a1a1a;
+  --text-color: #1e1e1e;
   --title-color: #000000;
-  --body-color: #fdfdfd;
-
+  --body-color: #f9f9f9;
+  --nav-color: #ffffff;
+  --accent-color: #2ecc71;
+  --accent-hover: #27ae60;
   --container-color: #fff;
+  --button-color: #555555
 
   /*========== Font and typography ==========*/
   --body-font: 'Poppins', sans-serif;
@@ -108,6 +111,7 @@ ul {
 
 a {
   text-decoration: none;
+  color: inherit;
 }
 
 button {
@@ -127,9 +131,11 @@ img {
   width: 100%;
   position: sticky;
   top: 0;
+  left: 0;
   z-index: 20;
-  background: var(--body-color);
-  margin-left: -0.1rem;
+  background: var(--nav-color);
+  padding: 0.5rem 2rem 0.3rem;
+  margin-bottom: 1rem;
 }
 
 
@@ -137,14 +143,15 @@ img {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0rem 4.5rem;
+  margin: 0rem;
   align-items: center;
   text-align: center;
+  padding: 0;
 }
 
 .nav_title{
   font-size: var(--h1-font-size);
-  color: var(--title-color);
+  /* color: var(--title-color); */
   display: flex;
   align-items: center;
 }
@@ -155,20 +162,35 @@ img {
 }
 
 .nav_item{
-  color: var(--title-color);
+  color: var(--text-color);
   padding: 1.5rem;
   transition: background-color 0.3s ease;
-  font-weight: var(--font-medium);
+  /* font-weight: ; */
+  font-size: 1.1rem;
 }
 
 .nav_item:hover{
-  color: grey;
+  color: var(--accent-color);
   transition: 0.4s ease-in-out;
+}
+.btn{
+  color: var(--nav-color);
+  background-color: var(--nav-color);
+  border: 1px solid var(--accent-color);
+  border-radius: 2rem;
+  padding-left: 0.4rem;
+  padding-right: 0.4rem;
+  /* padding-top: 0.1rem; */
+  padding-bottom: 0.1rem;
+  align-items: center;
+  color: var(--accent-color);
+  font-size: 1.1rem;
 }
 
 .btn:hover{
-  color: grey;
   transition: 0.4s ease-in-out;
+  background-color: var(--accent-hover);
+  color: var(--body-color);
 }
 
 .ld_upvotediv{
@@ -183,13 +205,29 @@ img {
 .logo{
   width: 2.6rem;
   height: 2.6rem;
-
+  margin-top: 0.3rem;
   border-radius: 50%;
   display: flex;
   justify-content: center;
   align-items: center;
   transition: background-color 0.3s ease;
-  margin-right: 0.5rem;
+  margin-right: 0.1rem;
+}
+.logo_text1{
+  color: var(--title-color);
+  font-weight: bold;
+}
+.logo_text2{
+  color: var(--accent-color);
+  font-weight: bold;
+}
+/* a:-webkit-any-link{
+  color: var(--accent-color);
+} */
+
+.logo_link{
+  display: flex;
+  align-items: center;
 }
 
 
@@ -233,19 +271,19 @@ img {
 }
 
 /*============== BUTTONS =============*/
-.button {
+/* .button {
   display: inline-block;
   background-color: var(--title-color);
   color: #fff;
   padding: 1.25rem 2rem;
   border-radius: 1rem;
   font-weight: var(--font-medium);
-}
+} */
 
-.button:hover {
+/* .button:hover {
   background-color: var(--title-color-dark);
-}
-
+} */
+/* 
 .button__icon { 
   margin-left: var(--mb-0-5);
 }
@@ -253,7 +291,7 @@ img {
 .button--flex {
   display: inline-flex;
   align-items: center;
-}
+} */
 
 /*============== BREAKPOINTS =============*/
 
@@ -286,7 +324,6 @@ img {
   .listing_info{
       margin: 1rem;
   }
-
 
   .nav_item{
     padding: 0.5rem;
@@ -501,6 +538,7 @@ img {
       /* margin-left: 1rem; */
       /* margin-bottom: 2rem; */
       padding-bottom: 1rem;
+      margin-top: -0.5rem;
     }
     .nav_header h1{
       font-size: 1.5rem;
@@ -532,13 +570,15 @@ img {
       /* justify-self: center; */
     }
     .btn{
-      padding: 0.3rem;
+      padding: 0rem 0.3rem;
+      padding-bottom: 0.1rem;
       font-size: 0.7rem;
+      align-items: center;
     }
 
     .listing_available h2{
-      font-size: 0.8rem;
-      margin-top: 0.5rem;
+      font-size: 0.9rem;
+      margin-top: 0rem;
       /* margin-left: -1rem; */
     }
 

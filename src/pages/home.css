@@ -1,7 +1,7 @@
 
 body{
-    padding: 2.5rem;
-    padding-top: 1rem;
+    /* padding: 2.5rem; */
+    /* padding-top: 1rem; */
     /* margin-top: 12rem; */
 }
 
@@ -72,17 +72,21 @@ body{
 
 .view_btn{
     padding: 0.5rem 1rem;
-    background-color: rgb(70, 70, 70);
-    color: #fff;
+    /* background-color: var(); */
+    color: var(--accent-color);
+    font-size: 1.15rem;
     border: none;
-    border-radius: 1.5rem;
+    border-radius: 1rem;
     cursor: pointer;
-    font-weight: var(--font-medium);
+    font-weight: 500;
+    margin-left: -2rem;
+    margin-right: 2rem;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif  ;
 }
 
 .view_btn:hover{
-    background-color: rgb(240, 240, 240);
-    color: var(--text-color);
+    background-color: var(--accent-color);
+    color: var(--nav-color);
     transition-duration: 0.8s;
 }
 
@@ -232,6 +236,12 @@ option{
     .home_card{
         margin: 1rem 0 !important;
     }
+    .view_btn{
+        font-weight: 500 !important;
+        font-size: 0.8rem !important;
+        margin-top: 0.3rem !important;
+    }
+
     
       
 

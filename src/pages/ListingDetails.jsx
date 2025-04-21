@@ -125,10 +125,10 @@ const ListingDetails = () => {
           {/* 👍 Upvote Button */}
           {isOwnListing ? (
             <div className='ld_upvotediv'>
-            <button className="ld_upvote text-gray-400 cursor-not-allowed" disabled>
+            <button className="ld_upvote ld_upvote_upvote text-gray-400 cursor-not-allowed" disabled>
               Upvote
             </button>
-            <p>(Disabled for your own listing)</p>
+            <p className='upvotedisabled'>(Disabled for your own listing)</p>
             </div>
           ) : (
             <button
@@ -150,7 +150,7 @@ const ListingDetails = () => {
       <div className="ld_details">
         <p className="ld_des text-sm">Description: {listing.description}</p>
         <p className="ld_rent text-lg font-semibold">Rent: ₹{listing.rent}</p>
-        <p className="ld_gender text-sm">Gender Preference: {listing.genderPref}</p>
+        <p className="ld_gender text-sm">Gender Preference: <p>{listing.genderPref}</p></p>
         <button
   onClick={handleCopyContact}
   className="ld_contact text-sm transition duration-200"

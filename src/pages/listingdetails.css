@@ -69,7 +69,7 @@
   }
   
   .ld_upvote {
-    background-color: #808080;
+    background-color: var(--accent-color);
     padding: 0.5rem 1rem;
     color: white;
     border-radius: 1rem;
@@ -83,12 +83,12 @@
   }
   
   .ld_upvote:hover {
-    background-color: #9f9f9f;
+    background-color: var(--accent-hover);
   }
   
   .ld_views {
     /* font-size: 0.95rem; */
-    color: #888;
+    color: var(--text-color);
     /* margin-top: auto; */
   }
   
@@ -115,7 +115,7 @@
   .ld_des {
     /* font-weight: 500; */
     /* font-size: 1.2rem; */
-    background-color: rgb(241, 241, 241);
+    /* background-color: rgb(241, 241, 241); */
     padding: 1rem;
     border-radius: 1rem;
     width: 100%;
@@ -131,16 +131,19 @@
     font-weight: 500;
     font-size: 1rem;
     margin-top: 0.5rem;
-    background-color: rgb(37, 37, 37);
-    color: white;
+    border: 2px solid var(--accent-color);
+    color: black;
     padding: 0.5rem 1.5rem;
     border-radius: 2rem;
     cursor: pointer;
+    background-color: var(--nav-color);
+    font-size: 1.1rem;
+
   }
 
   .ld_contact:hover{
-    background-color: rgb(245, 244, 244);
-    color: black;
+    background-color: var(--accent-color);
+    color: white;
     transition: 0.5s ease-in-out;
   }
 
@@ -148,32 +151,58 @@
     width: 35rem;
     /* color: black; */
 }
-
+/* 
 .swiper-button-next,
  .swiper-button-prev  {
-    color: black;
-}
-
-.swiper-button-next:hover,
-.swiper-button-prev:hover {
-    color: rgb(167, 167, 167);
-    transition: 0.3s ease-in-out;
-}
+    color: var(--accent-color);
+} */
 
 .swiper-button-next:after, 
 .swiper-button-prev:after {
     font-size: 2rem;
-    color: black;
+    color: var(--accent-color);
+    font-weight: bolder;
 }
+.swiper-button-next:hover,
+.swiper-button-prev:hover {
+    color: var(--accent-hover-color);
+    transition: 0.3s ease-in-out;
+}
+
   
   @media (max-width: 768px) {
+    
     .ld_window {
       padding: 1rem;
+      min-width: 10rem;
+      margin: 1rem;
+    }
+    .ld_title{
+      font-size: 1.2rem;
+      margin-top: 0;
+      margin-bottom: -2rem;
+    }
+    .ld_imagecard {
+      height: 13rem !important;
+      width: 13rem !important;
+    }
+    .ld_upvote{
+      font-size: 0.7rem;
+      /* margin: -1rem; */
+    }
+    .ld_views{
+      font-size: 0.7rem;
+      /* margin: -1rem; */
     }
   
     .ld_buttons {
-      flex-direction: column;
+      /* flex-direction: column; */
+      display: flex;
       align-items: center;
+      gap: 0.5rem;
+      margin-top: -1rem;
+      margin-bottom: -1rem;
+      /* font-size: 0.5rem; */
     }
   
     .ld_swiper,
@@ -181,6 +210,84 @@
       width: 100%;
       height: auto;
     }
+    .ld_upvotediv{
+      display: flex;
+      flex-direction: column;
+    }
+    .ld_upvotediv p{
+      display: none;
+    }
+    .ld_des,
+    .ld_rent,
+    .ld_gender,
+    .ld_contact {
+      font-size: 0.8rem;
+    }
+    .ld_des{
+      margin-top: -1.5rem;
+    }
+    .ld_rent{
+      margin-top: -1rem;
+    }
+    .ld_gender{
+      margin-top: -0.5rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .ld_contact{
+      margin-top: 0;
+      padding: 0.3rem 0.4rem;
+      font-size: 0.8rem;
+    }
+    .ld_details{
+      /* height: 5rem; */
+      /* margin-top: -2rem; */
+      line-height: -1rem;
+    }
+
+    .swiper-button-next:after, 
+.swiper-button-prev:after {
+    font-size: 0.8rem;
+    color: var(--accent-color);
+    font-weight: bolder;
+}
+.swiper-button-next:hover,
+.swiper-button-prev:hover {
+    color: var(--accent-hover-color);
+    transition: 0.3s ease-in-out;
+}
+
+.ld_modal_close{
+  font-size: 0.7rem !important;
+  width: 1rem !important;
+  height: 1rem !important;
+  margin-top: -0.5rem;
+}
+.ld_modal_swiper .swiper-button-prev:after,
+.ld_modal_swiper .swiper-button-next:after {
+  color: white;
+  font-size: 0.8rem !important;
+  font-weight: bolder;
+}
+
+.ld_modal_image {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  justify-self: center;
+  margin: 1rem;
+  padding: 1rem;
+  border-radius: 2rem;
+  height: 18rem !important;
+  max-width: 16rem !important;
+}
+
+
+ 
+ 
+
   }
   
 
