@@ -124,9 +124,12 @@ const ListingDetails = () => {
 <div className="ld_buttons">
           {/* 👍 Upvote Button */}
           {isOwnListing ? (
+            <div className='ld_upvotediv'>
             <button className="ld_upvote text-gray-400 cursor-not-allowed" disabled>
-              Upvote (Disabled for your own listing)
+              Upvote
             </button>
+            <p>(Disabled for your own listing)</p>
+            </div>
           ) : (
             <button
             onClick={handleUpvote}

@@ -199,5 +199,12 @@ option{
     .listing_control{
         margin-left: -0.6rem;
     }
+    .listing_stats{
+        margin-top: -1rem;
+        margin-bottom: -0.8rem;
+    }
+    .listing_info2{
+        margin-top: 1rem;
+    }
 
 }
