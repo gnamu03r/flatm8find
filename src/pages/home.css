@@ -186,30 +186,43 @@ option{
 
 
 @media screen and (max-width: 768px) {
+    .main_window{
+        
+    }
 
     .listing_available{
-        display: block;
-        /* grid-template-columns: 1fr; */
-        justify-content: center;
+        display: flex;
+        flex-direction: column;
         align-items: center;
-        /* margin-right: 0rem; */
-        margin-left: 2.5rem;
+        justify-content: center;
 
     }
     .listing_control{
-        margin-left: -1rem;
+        /* margin-left: -1rem; */
         margin-bottom: 0.7em;
+
     }
     .listing_stats{
         margin-top: -1rem;
         margin-bottom: -0.8rem;
     }
-    .filter_select{
+    .sort_select{
         width: 100%;
-        margin-left: 0.5rem;
+        /* margin-left: 0.5rem; */
+    }
+    .filter_select{
+        /* width: 100%; */
+        /* margin-left: 0.5rem; */
     }
     .listing_info2{
         margin-top: 1rem;
+    }
+
+    .homepage_window{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
     }
     
 

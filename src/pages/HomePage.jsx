@@ -181,8 +181,8 @@ const HomePage = () => {
         </div>
 
         {/* Two-column layout */}
-        <div className="flex flex-col md:flex-row gap-4">
-          <div className="flex-1 flex flex-col gap-4">
+        <div className="homepage_window">
+          <div className="homepage_column">
             {leftColumn.map(listing => (
               <ListingCard
                 key={listing.id}
@@ -191,7 +191,7 @@ const HomePage = () => {
               />
             ))}
           </div>
-          <div className="flex-1 flex flex-col gap-4">
+          <div className="homepage_column">
             {rightColumn.map(listing => (
               <ListingCard
                 key={listing.id}
