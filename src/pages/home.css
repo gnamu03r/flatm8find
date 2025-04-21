@@ -230,7 +230,7 @@ option{
         margin-top: 0.4rem;
     }
     .home_card{
-        margin: 1rem 0 ;
+        margin: 1rem 0 !important;
     }
     
       

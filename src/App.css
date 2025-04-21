@@ -490,12 +490,14 @@ img {
 
    
     .nav_header{
+      display: flex;
+      flex-direction: column;
       text-align: center;
       align-items: center;
       margin: 0;
       padding: 0;
-      display: grid;
-      grid-template-columns: 1fr;
+      /* display: grid; */
+      /* grid-template-columns: 1fr; */
       /* margin-left: 1rem; */
       /* margin-bottom: 2rem; */
       padding-bottom: 1rem;
@@ -537,7 +539,7 @@ img {
     .listing_available h2{
       font-size: 0.8rem;
       margin-top: 0.5rem;
-      margin-left: -1rem;
+      /* margin-left: -1rem; */
     }
 
     .listing_control{
@@ -584,6 +586,7 @@ img {
       grid-template-columns: 1fr;
       justify-content: center;
       align-items: center;
+      width: 15rem;
     }
 
     .listing_search{
@@ -596,6 +599,7 @@ img {
 
     .listing_sortfilter{
       width:80%;
+      gap: 0.5rem;
       /* margin-left: -1rem; */
     }
 
