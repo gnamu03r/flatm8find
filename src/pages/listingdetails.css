@@ -4,11 +4,12 @@
     margin-top: 3rem;
     border-radius: 1.5rem;
     padding: 2rem;
-    background-color: var(--body-color);
+    background-color: var(--container-color);
     box-shadow: 0 0 1.2rem rgba(0, 0, 0, 0.15);
     gap: 2rem;
     max-width: 70rem;
     margin-inline: auto;
+    margin-bottom: 4rem;
   }
   
   .ld_titleimg {
@@ -29,8 +30,8 @@
   }
   
   .ld_swiper {
-    width: 100%;
-    max-width: 35rem;
+    width: 40rem !important;
+    /* max-width: 40rem; */
     border-radius: 1rem;
     overflow: hidden;
   }
@@ -42,9 +43,11 @@
     justify-content: center;
     justify-self: center;
     margin: 1rem;
+    /* margin-left: 2rem;
+    margin-right: 2rem; */
     padding: 1rem;
     border-radius: 2rem;
-    background-color: var(--body-color);
+    background-color: var(--container-color);
     height: 30rem;
     width: 30rem;
     /* object-fit: contain; */
@@ -66,6 +69,7 @@
     margin: 0 auto;
     align-items: center;
     text-align: center;
+    margin-top: -1.5rem;
   }
   
   .ld_upvote {
@@ -74,13 +78,15 @@
     color: white;
     border-radius: 1rem;
     /* font-weight: 500; */
-    font-size: 0.9rem;
+    font-size: 1.2rem;
     display: flex;  
     gap: 0.5rem;
     /* flex-direction: column; */
     align-items: center;
     transition: 0.2s ease-in-out;
+    /* margin-top: -1rem; */
   }
+
   
   .ld_upvote:hover {
     background-color: var(--accent-hover);
@@ -89,6 +95,7 @@
   .ld_views {
     /* font-size: 0.95rem; */
     color: var(--text-color);
+    font-size: 1.2rem;
     /* margin-top: auto; */
   }
   
@@ -98,7 +105,7 @@
     align-items: center;
     gap: 1rem;
     padding: 1.5rem;
-    background-color: white;
+    background-color: var(--body-color);
     border-radius: 1rem;
     box-shadow: 0 0 0.8rem rgba(0, 0, 0, 0.05);
   }
@@ -107,9 +114,16 @@
   .ld_rent,
   .ld_gender,
   .ld_contact {
-    font-size: 1rem;
+    font-size: 1.2rem;
     color: #333;
     line-height: 1.4;
+  }
+  
+  .ld_gender {
+    display: flex;
+    /* flex-direction: column; */
+    align-items: center;
+    gap: 0.4rem;
   }
   
   .ld_des {
@@ -161,8 +175,7 @@
 .swiper-button-prev:after {
     font-size: 2rem;
     color: var(--accent-color);
-    font-weight: bolder;
-}
+    font-weight: bolder;}
 .swiper-button-next:hover,
 .swiper-button-prev:hover {
     color: var(--accent-hover-color);
@@ -178,13 +191,16 @@
       margin: 1rem;
     }
     .ld_title{
-      font-size: 1.2rem;
+      font-size: 1rem;
       margin-top: 0.5rem;
       margin-bottom: -2rem;
     }
+    
+
     .ld_imagecard {
       height: 12rem !important;
       width: 12rem !important;
+      padding: 1.5rem !important;
     }
     .ld_upvote{
       font-size: 0.7rem;
@@ -207,7 +223,8 @@
   
     .ld_swiper,
     .ld_imagecard {
-      width: 100%;
+      /* width: 100%; */
+      width: 14rem !important;
       height: auto;
     }
     .ld_upvotediv{

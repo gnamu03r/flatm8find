@@ -128,7 +128,7 @@ const ListingDetails = () => {
             <button className="ld_upvote ld_upvote_upvote text-gray-400 cursor-not-allowed" disabled>
               Upvote
             </button>
-            <p className='upvotedisabled'>(Disabled for your own listing)</p>
+       
             </div>
           ) : (
             <button

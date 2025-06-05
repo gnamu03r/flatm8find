@@ -50,7 +50,7 @@ const App = () => {
                   <SignOutButton />
                 </>
               ) : (
-                <Link to="/auth" className="nav_item">Login/Signup</Link>
+                <Link to="/auth" className="nav_item nav_login">Login/Signup</Link>
               )}
             </div>
           </div>

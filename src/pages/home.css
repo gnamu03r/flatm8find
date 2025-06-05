@@ -3,22 +3,24 @@ body{
     /* padding: 2.5rem; */
     /* padding-top: 1rem; */
     /* margin-top: 12rem; */
+    font-size: 1.25rem !important;
 }
 
 .home_card{
-    width: 80%;
-    max-width: 89%;
-    background-color: white;
+    width: 85%;
+    /* max-width: 89%; */
+    background-color: var(--container-color);
+    /* background-color: var(--card-color); */
     display: grid;
     grid-template-columns: 1fr 4fr;
     margin: 2rem auto;
-    padding: 1rem;
+    padding: 1.5rem;
     border-radius: 0.5rem;
-    box-shadow: 0 0 0.4rem rgba(0,0,0,0.2);
+    box-shadow: 0 0 0.1rem rgba(0,0,0,0.2);
 }
 
 .home_card:hover{
-    box-shadow: 0 0 1rem rgba(0,0,0,0.2);
+    box-shadow: 0 0 0.5rem rgba(0,0,0,0.2);
     transition: box-shadow 0.6s ease;
     background-color: rgb(250, 250, 250);
     transition: 0.3s ease-in-out;
@@ -73,9 +75,9 @@ body{
 .view_btn{
     padding: 0.5rem 1rem;
     /* background-color: var(); */
-    color: var(--accent-color);
+    color: var(--button-color);
     font-size: 1.15rem;
-    border: none;
+    border: 1px solid var(--button-color);
     border-radius: 1rem;
     cursor: pointer;
     font-weight: 500;
@@ -85,7 +87,7 @@ body{
 }
 
 .view_btn:hover{
-    background-color: var(--accent-color);
+    background-color: var(--button-color);
     color: var(--nav-color);
     transition-duration: 0.8s;
 }
@@ -117,10 +119,10 @@ body{
 
 .listing_available h2{
     margin: 0;
-    font-size: 1.5rem;
-    color: var(--text-color);
+    font-size: 1.6rem;
+    /* color: rgb(11, 134, 175); */
     text-align: center;
-    font-weight: var(--font-medium);
+    font-weight: bold;
     margin-bottom: 0.5rem;
 }
 
@@ -130,6 +132,9 @@ body{
      align-items: center;
      padding-top: 0.3rem;
      margin-bottom: 2rem;
+     margin-right: 2rem;
+     margin-left: 1.3rem;
+     /* font-size: 2rem !important; */
 }
 
 .listing_search{
@@ -139,6 +144,8 @@ body{
     box-shadow: 0 0 0.1rem rgba(0,0,0,0.2);
     padding: 0.2rem 1rem;
     margin: 1rem;
+    /* margin-left: 2rem; */
+    font-size: 1.2rem;
 }
 
 .listing_search:hover{
@@ -148,12 +155,13 @@ body{
 
 
 .listing_sortfilter{
-    display: grid;
-    grid-template-columns: 1fr 1fr;
+    display: flex;
+    /* flex-direction: column; */
     align-items: center;
     text-align: center;
     padding-left: 2rem;
     width: 100%;
+    gap: 1rem;
 }
 
 select{
@@ -172,7 +180,7 @@ option{
     border: rgb(241, 239, 239) 0.1rem solid;
     border-radius: 0.8rem;
     box-shadow: 0 0 0.1rem rgba(0,0,0,0.2);
-    font-size: 1rem;
+    font-size: 1.2rem;
     padding: 0.1rem 1rem;
     color: grey;
 }
@@ -182,7 +190,7 @@ option{
     border: rgb(241, 239, 239) 0.1rem solid;
     border-radius: 0.8rem;
     box-shadow: 0 0 0.1rem rgba(0,0,0,0.2);
-    font-size: 1rem;
+    font-size: 1.2rem;
     padding: 0.1rem 1rem;
     color: grey;
 }
@@ -210,7 +218,7 @@ option{
     }
     .listing_search{
         margin: 0;
-        width: 13.5rem !important;
+        width: 15.5rem !important;
     }
     .listing_sortfilter{
         /* margin: 0; */
@@ -221,12 +229,14 @@ option{
         margin-bottom: -0.7rem;
     }
     .sort_select{
-        width: 100%;
+        width: 15rem;
+        font-size: 0.4rem !important;
         
         /* margin-left: 0.5rem; */
     }
     .filter_select{
         width: 100%;
+        font-size: 0.4rem !important;
         /* margin-left: 0.5rem; */
         justify-self: center;
     }

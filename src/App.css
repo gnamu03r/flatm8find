@@ -16,12 +16,14 @@
   --sat: 0%;
   --text-color: #1e1e1e;
   --title-color: #000000;
-  --body-color: #f9f9f9;
+  --body-color: #FAFAFB;
   --nav-color: #ffffff;
-  --accent-color: #2ecc71;
-  --accent-hover: #27ae60;
-  --container-color: #fff;
-  --button-color: #555555
+  --accent-color: 	#4F46E5;
+  --accent-hover: #3b378b;
+  --container-color: #f5f5f5;
+  --highlight-color: #6EE7B7;
+  --extra-color: #FDBA74;
+  --button-color: #4F46E5;
 
   /*========== Font and typography ==========*/
   --body-font: 'Poppins', sans-serif;
@@ -133,7 +135,9 @@ img {
   top: 0;
   left: 0;
   z-index: 20;
-  background: var(--nav-color);
+  background: var(--body-color);
+  border-bottom: 1px solid #e5e7eb;
+  /* box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05); */
   padding: 0.5rem 2rem 0.3rem;
   margin-bottom: 1rem;
 }
@@ -147,10 +151,11 @@ img {
   align-items: center;
   text-align: center;
   padding: 0;
+  margin-top: -0.3rem;
 }
 
 .nav_title{
-  font-size: var(--h1-font-size);
+  font-size: 2.8rem;
   /* color: var(--title-color); */
   display: flex;
   align-items: center;
@@ -166,25 +171,37 @@ img {
   padding: 1.5rem;
   transition: background-color 0.3s ease;
   /* font-weight: ; */
-  font-size: 1.1rem;
+  font-size: 1.2rem;
 }
 
 .nav_item:hover{
-  color: var(--accent-color);
+  color: var(--button-color);
   transition: 0.4s ease-in-out;
 }
+
+.nav_login{
+  color: var(--accent-color);
+  font-weight: var(--font-medium);
+}
+
+.nav_login:hover{
+  color: var(--accent-hover-color);
+  transition: 0.4s ease-in-out;
+}
+
 .btn{
   color: var(--nav-color);
   background-color: var(--nav-color);
   border: 1px solid var(--accent-color);
-  border-radius: 2rem;
+  border-radius: 0.8rem;
   padding-left: 0.4rem;
   padding-right: 0.4rem;
   /* padding-top: 0.1rem; */
   padding-bottom: 0.1rem;
   align-items: center;
   color: var(--accent-color);
-  font-size: 1.1rem;
+  font-size: 1.2rem;
+  font-weight: var(--font-medium);
 }
 
 .btn:hover{
@@ -203,9 +220,9 @@ img {
 }
 
 .logo{
-  width: 2.6rem;
-  height: 2.6rem;
-  margin-top: 0.3rem;
+  width: 3.2rem;
+  height: 3.2rem;
+  margin-top: 0.2rem;
   border-radius: 50%;
   display: flex;
   justify-content: center;
@@ -561,7 +578,7 @@ img {
       height: 2rem;
       padding: 0rem;
       margin-right: 0.1rem;
-      margin-left: -1rem;
+      margin-left: -0.85rem;
   
     }
 

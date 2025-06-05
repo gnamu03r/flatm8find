@@ -4,6 +4,7 @@ import { collection, addDoc, serverTimestamp } from 'firebase/firestore';
 import { useAuth } from '../hooks/useAuth';
 import { useNavigate } from 'react-router-dom';
 import Layout from '../components/Layout';
+import './postlisting.css';
 
 const resizeImage = (file) => {
   return new Promise((resolve, reject) => {
@@ -79,9 +80,9 @@ const PostListing = () => {
 
   const handleImageChange = (e) => {
     const files = Array.from(e.target.files);
-    const validImages = files.filter(file => file.size <= 5 * 1024 * 1024);
+    const validImages = files.filter(file => file.size <= 10 * 1024 * 1024);
     if (validImages.length !== files.length) {
-      alert('Some images exceed the size limit (5MB). These will not be uploaded.');
+      alert('Some images exceed the size limit (10MB). These will not be uploaded.');
     }
     setFormData((prev) => ({
       ...prev,
@@ -171,26 +172,26 @@ const PostListing = () => {
   return (
     <Layout>
 
-    <div className="max-w-lg mx-auto p-6 mt-10 bg-white shadow-md rounded-lg">
-      <h2 className="text-2xl font-bold mb-4">Post a Room Listing</h2>
-      <form onSubmit={handleSubmit} className="space-y-4">
-        <input type="text" name="area" placeholder="Area (e.g. Ber Sarai)" onChange={handleChange} required className="w-full border p-2 rounded" />
-        <input type="number" name="rent" placeholder="Rent (e.g. 6000)" onChange={handleChange} required className="w-full border p-2 rounded" />
-        <input type="text" name="roomType" placeholder="Room Type (e.g. 2 Sharing)" onChange={handleChange} required className="w-full border p-2 rounded" />
+    <div className="post_window">
+      <h2 className="post_title">Post a Room Listing</h2>
+      <form onSubmit={handleSubmit} className="post_form">
+        <input type="text" name="area" placeholder="Area (e.g. Ber Sarai)" onChange={handleChange} required className="post_item" />
+        <input type="number" name="rent" placeholder="Rent (e.g. 6000)" onChange={handleChange} required className="post_item" />
+        <input type="text" name="roomType" placeholder="Room Type (e.g. 2 Sharing)" onChange={handleChange} required className="post_item" />
 
-        <select name="genderPref" onChange={handleChange} value={formData.genderPref} required className="w-full border p-2 rounded">
+        <select name="genderPref" onChange={handleChange} value={formData.genderPref} required className="post_item post_item_gender">
           <option value="">Select Gender Preference</option>
           <option value="Male">Male</option>
           <option value="Female">Female</option>
           <option value="Any">Both</option>
         </select>
 
-        <textarea name="description" placeholder="Description" onChange={handleChange} required className="w-full border p-2 rounded" />
-        <input type="text" name="contactInfo" placeholder="Contact Info (e.g. Insta/Phone)" onChange={handleChange} required className="w-full border p-2 rounded" />
-        <input type="file" name="images" accept="image/*" onChange={handleImageChange} multiple className="w-full border p-2 rounded" />
+        <textarea name="description" placeholder="Description" onChange={handleChange} required className="post_item" />
+        <input type="text" name="contactInfo" placeholder="Contact Info (e.g. Insta/Phone)" onChange={handleChange} required className="post_item" />
+        <input type="file" name="images" accept="image/*" onChange={handleImageChange} multiple className="post_item post_item_img" />
 
         {formData.images.length > 0 && (
-          <div className="mt-2">
+          <div className="selected_images">
             <p>Selected Images:</p>
             <ul className="space-y-2">
               {formData.images.map((image, index) => (
@@ -208,7 +209,7 @@ const PostListing = () => {
 
         {uploadError && <p className="text-red-500">{uploadError}</p>}
 
-        <button type="submit" className="bg-blue-600 text-white py-2 px-4 rounded hover:bg-blue-700" disabled={uploading}>
+        <button type="submit" className="post_button" disabled={uploading}>
           {uploading ? 'Uploading...' : 'Post Listing'}
         </button>
       </form>

@@ -41,7 +41,7 @@ const ListingCard = ({ listing, handleViewDetailsClick }) => {
       </div>
       <div className="listing_info">
         <div className="listing_name">
-          <h3>{listing.area} - {listing.roomType}</h3>
+          <h3>{listing.area}</h3><p></p>
           <p className="listing_rent">₹{listing.rent} per person</p>
         </div>
         <div className="listing_day">{getDaysAgo(listing.createdAt)}</div>
