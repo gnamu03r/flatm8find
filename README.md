@@ -34,5 +34,7 @@
 ![image](https://github.com/user-attachments/assets/c552aaeb-641e-4f5e-97d0-a4408f283cfe)
 
 
+##📫 Contact
 
-
+Developer: Umang Raj
+LinkedIn: [linkedin.com/in/umangraj](https://www.linkedin.com/in/umang-raj-263013250/)
